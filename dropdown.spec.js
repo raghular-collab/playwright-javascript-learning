@@ -22,3 +22,14 @@ test('multi dropdown',async({page})=>{
     await page.waitForTimeout(2000);
 
 });
+
+test.only('amazon dropdown',async({page})=>{
+    await page.goto('https://www.amazon.in/');
+
+    await page.locator("//button[text()='Continue shopping']").click();
+    await page.waitForTimeout(1000);
+    await page.locator('#searchDropdownBox').click();
+    await page.selectOption('#searchDropdownBox',{value:'search-alias=fashion'});
+    await page.locator('#twotabsearchtextbox').fill("Shirts");
+    await page.locator('#nav-search-submit-button').click();
+})
