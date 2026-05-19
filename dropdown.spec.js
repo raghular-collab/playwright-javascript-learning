@@ -23,7 +23,7 @@ test('multi dropdown',async({page})=>{
 
 });
 
-test.only('amazon dropdown',async({page})=>{
+test('amazon dropdown',async({page})=>{
     await page.goto('https://www.amazon.in/');
 
     await page.locator("//button[text()='Continue shopping']").click();
@@ -32,4 +32,13 @@ test.only('amazon dropdown',async({page})=>{
     await page.selectOption('#searchDropdownBox',{value:'search-alias=fashion'});
     await page.locator('#twotabsearchtextbox').fill("Shirts");
     await page.locator('#nav-search-submit-button').click();
-})
+});
+
+//to fetch all values in a dropdown
+
+test.only('fetch dropdown values',async({page})=>{
+    await page.goto('https://testautomationcentral.com/demo/dropdown.html');
+
+    const option = await page.locator("//select[contains(@class,'form-select block w-full mt-1')]").allTextContents();
+    console.log(option);
+});
